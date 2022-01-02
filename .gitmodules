@@ -1,0 +1,3 @@
+[submodule "myTCP"]
+	path = myTCP
+	url = https://github.com/Kei-naga/TCP.git
