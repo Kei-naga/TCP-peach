@@ -7,7 +7,7 @@ import os
 import re
 import socket
 
-from Peach.agent import Monitor
+from Peach.agentfile import Monitor
 
 
 try:

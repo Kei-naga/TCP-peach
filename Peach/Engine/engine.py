@@ -623,8 +623,8 @@ from Peach.Engine.state import StateEngine
 from Peach.Engine.common import *
 from Peach.Engine.common import SoftException
 from Peach.Engine.path import *
-from Peach.agent import AgentPlexer
-from Peach.mutatestrategies import *
+from Peach.agentfile import AgentPlexer
+from Peach.mutatestra import *
 from Peach.MutateStrategies import *
 from Peach.analyzer import Analyzer
 from Peach.Analyzers import *

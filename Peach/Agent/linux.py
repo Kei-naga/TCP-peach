@@ -5,7 +5,7 @@ import sys
 import time
 import os
 
-from Peach.agent import Monitor
+from Peach.agentfile import Monitor
 
 
 class LinuxApport(Monitor):

@@ -3,7 +3,7 @@
 # file, You can obtain one at http://mozilla.org/MPL/2.0/.
 import random
 
-from Peach.mutatestrategies import *
+from Peach.mutatestra import *
 from Peach.mutator import *
 from Peach.Engine.incoming import DataCracker
 

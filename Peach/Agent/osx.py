@@ -7,7 +7,7 @@ import re
 import time
 import signal
 
-from Peach.agent import Monitor
+from Peach.agentfile import Monitor
 
 
 class CrashReporter(Monitor):

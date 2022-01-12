@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding="UTF-8" ?>
+<Peach version="1.0" author="keitaro" description="TCP DataModels">
+
+  <!-- StateModel要素 -->
+  <!--
+  <StateModel name="TcpModel" initialState="recv1">
+    <State name="recv1">
+      <Action type="input">
+        <DataModel ref="RecvCommand1"/>
+      </Action>
+      <Action type="changeState" ref="recv2" />
+    </State>
+    <State name="recv2">
+      <Action type="input">
+        <DataModel ref="RecvCommand2"/>
+      </Action>
+      <Action type="changeState" ref="Sending1" />
+    </State>
+    <State name="Sending1">
+      <Action type="output">
+        <DataModel ref="PublishCommand"/>
+      </Action>
+    </State>
+  </StateModel>
+-->
+  <StateModel name="TcpModel" initialState="Sending">
+    <State name="Sending">
+      <Action type="output">
+        <DataModel ref="PublishCommand"/>
+      </Action>
+    </State>
+  </StateModel>
+
+  <!-- Test要素 -->
+  <Test name="Test">
+    <StateModel ref="TcpModel"/>
+    <Publisher class="my_publish.MyTcp">
+      <Param name="port" value="80"/>
+      <Param name="interface" value="enp0s3"/>
+      <Param name="host" value="192.168.0.141"/>
+    </Publisher>
+    <Strategy class="rand.RandomMutationStrategy" params="MaxFieldsToMutate=1"/>
+  </Test>
+
+  <!-- Run要素 -->
+  <Run name="DefaultRun" description="Run (tcp)">
+    <Test ref="Test"/>
+    <Logger class="logger.Filesystem">
+      <Param name="path" value="Logs/TCP"/>
+    </Logger>
+  </Run>
+</Peach>

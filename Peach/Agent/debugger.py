@@ -13,7 +13,7 @@ import tempfile
 
 import psutil
 
-from Peach.agent import Monitor
+from Peach.agentfile import Monitor
 
 try:
     import comtypes

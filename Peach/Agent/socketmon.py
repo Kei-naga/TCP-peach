@@ -8,7 +8,7 @@ import socket
 sys.path.append("..")
 sys.path.append("../..")
 
-from Peach.agent import Monitor
+from Peach.agentfile import Monitor
 from twisted.internet import reactor, protocol
 from threading import Thread
 

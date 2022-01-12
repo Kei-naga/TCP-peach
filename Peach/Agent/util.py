@@ -4,7 +4,7 @@
 import os
 import shutil
 
-from Peach.agent import Monitor
+from Peach.agentfile import Monitor
 
 
 class CleanupFolder(Monitor):

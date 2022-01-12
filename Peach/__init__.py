@@ -9,7 +9,7 @@ import Engine
 import agent
 import mutator
 import Mutators
-import mutatestrategies
+import mutatestra
 import MutateStrategies
 import logger
 import Fixups
@@ -25,6 +25,6 @@ __all__ = [
 "Mutators",
 "fixup",
 "Fixups",
-"mutatestrategies",
+"mutatestra",
 "MutateStrategies"
 ]

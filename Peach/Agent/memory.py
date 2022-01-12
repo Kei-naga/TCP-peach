@@ -10,7 +10,7 @@ try:
     sys.path.append("..")
     sys.path.append("../..")
 
-    from Peach.agent import Monitor
+    from Peach.agentfile import Monitor
 
     PROCESS_VM_READ = 0x0010
     PROCESS_QUERY_INFORMATION = 0x0400

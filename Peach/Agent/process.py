@@ -26,7 +26,7 @@ except:
     if sys.platform == 'win32':
         print("Warning: PyWin32 extensions not found, disabling various process monitors.")
 
-from Peach.agent import Monitor, MonitorDebug
+from Peach.agentfile import Monitor, MonitorDebug
 from Peach.Engine.common import PeachException
 from Peach.Utilities.common import *
 

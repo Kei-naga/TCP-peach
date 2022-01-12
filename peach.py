@@ -20,7 +20,7 @@ from Peach.Engine.engine import *
 from Peach.Engine.common import *
 from Peach.analyzer import Analyzer
 from Peach.Analyzers import *
-from Peach.agent import Agent
+from Peach.agentfile import Agent
 
 p = os.path.dirname(os.path.abspath(sys.executable))
 sys.path.append(p)

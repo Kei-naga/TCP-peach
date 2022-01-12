@@ -6,7 +6,7 @@ import hashlib
 import logging
 
 from Peach.Engine.engine import Engine
-from Peach.mutatestrategies import *
+from Peach.mutatestra import *
 from Peach.Engine.incoming import DataCracker
 from Peach.Engine.common import *
 
