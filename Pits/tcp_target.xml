@@ -2,27 +2,24 @@
 <Peach version="1.0" author="keitaro" description="TCP DataModels">
 
   <!-- StateModel要素 -->
-  <!--
-  <StateModel name="TcpModel" initialState="recv1">
-    <State name="recv1">
+
+  <StateModel name="TcpModel" initialState="acception">
+    <State name="acception">
+      <Action type="accept"/>
       <Action type="input">
-        <DataModel ref="RecvCommand1"/>
+        <DataModel ref="RecvCommand"/>
       </Action>
-      <Action type="changeState" ref="recv2" />
-    </State>
-    <State name="recv2">
-      <Action type="input">
-        <DataModel ref="RecvCommand2"/>
-      </Action>
-      <Action type="changeState" ref="Sending1" />
-    </State>
-    <State name="Sending1">
+      <!--
       <Action type="output">
-        <DataModel ref="PublishCommand"/>
+        <DataModel ref="PublishCommand1"/>
+      </Action>
+    -->
+      <Action type="output">
+        <DataModel ref="PublishCommand3"/>
       </Action>
     </State>
   </StateModel>
--->
+  <!--
   <StateModel name="TcpModel" initialState="Sending">
     <State name="Sending">
       <Action type="output">
@@ -30,7 +27,7 @@
       </Action>
     </State>
   </StateModel>
-
+  -->
   <!-- Test要素 -->
   <Test name="Test">
     <StateModel ref="TcpModel"/>
@@ -39,7 +36,7 @@
       <Param name="interface" value="enp0s3"/>
       <Param name="host" value="192.168.0.141"/>
     </Publisher>
-    <Strategy class="rand.RandomMutationStrategy" params="MaxFieldsToMutate=1"/>
+    <Strategy class="rand.RandomMutationStrategy" />
   </Test>
 
   <!-- Run要素 -->

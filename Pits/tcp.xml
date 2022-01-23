@@ -2,63 +2,94 @@
 <Peach version="1.0" author="keitaro" description="TCP DataModels">
   <Include ns="default" src="file:Tcp/tcpdefaults.xml"/>
 
-  <DataModel name="PublishCommand">
-    <Blob name="srcPort" valueType="hex" value="0050" size="16"/>
-    <Blob name="destPort" valueType="hex" value="cbc2" size="16"/>
+  <DataModel name="HeaderLine">
+    <String name="HeaderName"/>
+    <String name="Colon" value=":" type="char"/>
+    <String name="Space" value=" " type="char"/>
+    <String name="HeaderValue"/>
+    <String name="Newline" value="\r\n"/>
+  </DataModel>
+
+  <DataModel name="PublishCommand2">
+    <Blob name="srcPort" valueType="hex" value="0050" />
     <!--
+    <Blob name="destPort" valueType="hex" value="cbc2" size="16"/>
+
     <Blob name="sequence_num" valueType="hex" value="08c7f989"/>
     <Blob name="ack_num" valueType="hex" value="17a45ba0"/>
   -->
+    <Blob name="header_len" valueType="hex" value="50" />
+    <Blob name="flags" valueType="hex" value="11" />
+    <Blob name="wind_size" valueType="hex" value="ffff" />
+    <!--
+    <Blob name="checksum" valueType="hex" value="ebf4" size="16"/>
+    -->
+    <Blob name="emergen_point" valueType="hex" value="0000" />
+    <String name="payload"/>
+  </DataModel>
+
+  <DataModel name="PublishCommand3">
+    <Blob name="srcPort" valueType="hex" length="2"/>
+    <!--
+    <Blob name="destPort" valueType="hex" value="cbc2" size="16"/>
+
+    <Blob name="sequence_num" valueType="hex" value="08c7f989"/>
+    <Blob name="ack_num" valueType="hex" value="17a45ba0"/>
+  -->
+    <Blob name="header_len" valueType="hex" length="1" />
+    <Blob name="flags" valueType="hex" length="1" />
+    <Blob name="wind_size" valueType="hex" length="2" />
+    <!--
+    <Blob name="checksum" valueType="hex" value="ebf4" size="16"/>
+    -->
+    <Blob name="emergen_point" valueType="hex" length="2" />
+    <String name="payload"/>
+  </DataModel>
+
+  <DataModel name="PublishCommand1">
+    <Blob name="srcPort" valueType="hex" value="0050" size="16"/>
     <Blob name="header_len" valueType="hex" value="50" size="8"/>
     <Blob name="flags" valueType="hex" value="11" size="8"/>
     <Blob name="wind_size" valueType="hex" value="ffff" size="16"/>
-    <Blob name="checksum" valueType="hex" value="ebf4" size="16"/>
     <Blob name="emergen_point" valueType="hex" value="0000" size="16"/>
+
+    <String name="version" value="HTPP/1.1"/>
+    <String name="code" value="200"/>
+    <String name="ok" value="OK"/>
+    <String name="newline" value="\r\n"/>
+
+    <Block name="DateHeader" ref="HeaderLine">
+      <String name="HeaderName" value="Date"/>
+      <String name="HeaderValue" value="Sat, 04 Apr 2020 18:27:54 GMT"/>
+    </Block>
+
+    <Block name="ServerHeader" ref="HeaderLine">
+      <String name="HeaderName" value="Server"/>
+      <String name="HeaderValue" value="Apache"/>
+    </Block>
+
+    <Block name="connectHeader" ref="HeaderLine">
+      <String name="HeaderName" value="Connection"/>
+      <String name="HeaderValue" value="close"/>
+    </Block>
+
+    <Block name="encoHeader" ref="HeaderLine">
+      <String name="HeaderName" value="Transfer-Encoding"/>
+      <String name="HeaderValue" value="chunked"/>
+    </Block>
+
+    <Block name="ContentTypeHeader" ref="HeaderLine">
+      <String name="HeaderName" value="Content-Type"/>
+      <String name="HeaderValue" value="text/html; charset=UTF-8"/>
+    </Block>
+
+    <String name="newline" value="\r\n"/>
+
+    <String name="Httppayload" value="21\r\nNew records created successfully\n\r\n"/>
+    <String name="file" value="d\r\nwriteData.php\r\n0\r\n"/>
   </DataModel>
-  <DataModel name="RecvCommand1">
-    <String name="Method" value="POST"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="version" value="HTTP/1.1"/>
-    <String name="Newline" value="\r\n"/>
 
-    <String name="Host" value="Host"/>
-    <String name="Colon" value=":" type="char"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="ip" value="192.168.0.102"/>
-    <String name="Newline" value="\r\n"/>
-
-    <String name="useragent" value="User-Agent"/>
-    <String name="Colon" value=":" type="char"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="UAvalue" value="ESP32HTTPClient"/>
-    <String name="Newline" value="\r\n"/>
-
-    <String name="connect" value="Connection"/>
-    <String name="Colon" value=":" type="char"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="connectvalue" value="keep-alive"/>
-    <String name="Newline" value="\r\n"/>
-
-    <String name="contentType" value="Content-Type"/>
-    <String name="Colon" value=":" type="char"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="contentTypevalue" value="application/json"/>
-    <String name="Newline" value="\r\n"/>
-
-    <String name="auth" value="Authorization"/>
-    <String name="Colon" value=":" type="char"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="authvalue" value="Basic TXlVc2VyOk15UGFzc3dvcmQ="/>
-    <String name="Newline" value="\r\n"/>
-
-    <String name="contentLen" value="Content-Length"/>
-    <String name="Colon" value=":" type="char"/>
-    <String name="Space" value=" " type="char"/>
-    <String name="contentLenvalue" value="4"/>
-    <String name="Newline" value="\r\n"/>
-    <String name="Newline" value="\r\n"/>
-  </DataModel>
-  <DataModel name="RecvCommand2">
+  <DataModel name="RecvCommand">
     <String name="body" value="test"/>
   </DataModel>
 </Peach>
